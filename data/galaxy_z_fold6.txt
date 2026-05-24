@@ -1,0 +1,121 @@
+GUÍA TÉCNICA - SAMSUNG GALAXY Z FOLD6
+======================================
+
+ESPECIFICACIONES TÉCNICAS
+- Pantalla externa: 6.3" Dynamic AMOLED 2X, 120Hz
+- Pantalla interna: 7.6" Dynamic AMOLED 2X, 120Hz
+- Procesador: Snapdragon 8 Gen 3 Leading Version
+- RAM: 12GB
+- Almacenamiento: 256GB / 512GB
+- Batería: 4900mAh, carga 25W
+- Cámara principal: 50MP f/1.8
+- Cámara ultra angular: 12MP f/2.2
+- Cámara telefoto: 10MP (3x) f/2.4
+- Cámara interna: 10MP f/2.2
+- Cámara frontal externa: 10MP f/2.2
+- Sistema operativo: One UI 6 Fold (Android 14)
+- Certificación: IPX8 (agua, no polvo)
+- Peso: 239g
+
+SOLUCIONES COMUNES
+
+PROBLEMA: Bisagra cruje o hace ruido
+SOLUCIÓN:
+1. IMPORTANTE: Nunca fuerces el pliegue. Movimiento debe ser suave.
+2. Limpiar bisagra con aire comprimido: Remover polvo acumulado
+3. No aplicar presión lateral mientras está doblado
+4. No dormir sobre el dispositivo doblado
+5. Si cruje persiste - DERIVAR A SERVICIO TÉCNICO (posible desgaste)
+
+PROBLEMA: Pantalla interna tiene línea o punto oscuro
+SOLUCIÓN:
+1. Verificar si es suciedad: Paño microfiber seco en pliegue
+2. Reiniciar dispositivo completamente
+3. Si marca persiste en mismo sitio - DERIVAR A SERVICIO TÉCNICO (defecto de pantalla)
+4. NO presionar pantalla interna bruscamente
+
+PROBLEMA: Pantalla se cierra accidentalmente o no cierra bien
+SOLUCIÓN:
+1. Verificar alineación de bordes: Deben estar perfectamente paralelos
+2. Ajustar cierre: Presionar suavemente hasta escuchar clic
+3. Limpiar marco de cierre: Polvo podría evitar cierre correcto
+4. No cargar peso asimétrico cuando está abierto
+5. Si no cierra completamente - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Aplicaciones se ven extraño en pantalla interna
+SOLUCIÓN:
+1. Habilitar Multi-ventana: Ajustes > Pantallas > Aplicaciones de múltiples ventanas
+2. Configurar disposición: Ajustes > Pantallas > Modo plegado
+3. Actualizar aplicación desde Google Play
+4. Resetear preferencias de app: Ajustes > Aplicaciones > [App] > Almacenamiento > Borrar datos
+5. Si error visual persiste - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Batería carga lentamente
+SOLUCIÓN:
+1. Usar cargador 25W original o certificado
+2. Cerrar aplicaciones durante carga: Reduce generación de calor
+3. Apagar dispositivo mientras carga (carga 30% más rápido)
+4. Desactivar 5G: Ajustes > Conexión > Redes móviles > 5G (desactivar)
+5. Temperatura normal debe ser 20-35°C
+6. Si carga muy lentamente - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Batería descarga rápidamente
+SOLUCIÓN:
+1. Z Fold consume más energía por tener 2 pantallas
+2. Reducir ambas a 60Hz: Ajustes > Pantalla > Velocidad de actualización
+3. Reducir brillo a 30-40%
+4. Desactivar 5G si no necesitas
+5. Activar modo ahorro: Ajustes > Batería > Modo ahorro
+6. Desactivar sincronización automática de apps: Ajustes > Cuentas
+7. Cerrar aplicaciones en multitarea que no uses
+
+PROBLEMA: Pantalla externa se daña (grieta, raya)
+SOLUCIÓN:
+1. Parar de usar inmediatamente para evitar daño mayor
+2. Limpiar con paño seco (no líquidos)
+3. Si hay grieta: Agua/polvo podría entrar en pliegue - DERIVAR A SERVICIO TÉCNICO
+4. IPX8 protege de agua pero grieta anula protección
+5. IMPORTANTE: Usar vidrio protector o película
+
+PROBLEMA: Cámara interna borrosa
+SOLUCIÓN:
+1. Limpiar lente interna con paño suave: Acceso desde pliegue
+2. Verificar si hay polvo en sensor: Aire comprimido suave
+3. Resetear app de cámara: Ajustes > Aplicaciones > Cámara > Borrar datos
+4. Desactivar IA mejora nocturna: Cámara > Configuración > IA
+5. Si no mejora - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: No reconoce SIM o problemas de conectividad
+SOLUCIÓN:
+1. Bandeja SIM está en borde externo: Usar herramienta incluida
+2. Limpiar contactos de SIM con goma suave
+3. Reinsertar correctamente: Lado dorado hacia arriba
+4. Reiniciar dispositivo
+5. Modo avión: Desactivar/Reactivar para resetear conexión
+6. Actualizar software: Ajustes > Actualizaciones
+7. Si persiste - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Micrófono del lado equivocado no funciona
+SOLUCIÓN:
+1. Z Fold tiene 2 micrófonos (superior e inferior)
+2. Probar en aplicación: Grabadora, Llamada, etc.
+3. Si falla solo uno:
+   - Limpiar con aire comprimido
+   - Verificar permisos: Ajustes > Privacidad > Permisos > Micrófono
+4. Si ambos fallan - DERIVAR A SERVICIO TÉCNICO
+
+MANTENIMIENTO PREVENTIVO
+- Abrir/cerrar suavemente: Evita picos de presión en bisagra
+- Limpiar pliegue mensualmente: Aire comprimido ligero
+- Usar funda protectora: Diseñada para Z Fold
+- Evitar entornos polvorientos: Protección IPX8 no es contra polvo
+- Actualizar software: Ajustes > Actualizaciones (nuevas optimizaciones)
+- Respaldar datos: Ajustes > Cuentas > Backup
+
+CARACTERÍSTICAS ESPECIALES
+- Nexus Engine: Chip IA optimizado para Z Fold
+- Multi-ventana avanzada: 3 apps simultáneamente
+- Modo Flex: Apps se adaptan automáticamente a ángulo de apertura
+5. Samsung SmartThings: Control de dispositivos inteligentes
+- FlexCam: Cámara sin necesidad de mano (modo manos libres)
+- DeX Experience: Experiencia de escritorio al abrir

@@ -1,0 +1,116 @@
+GUÍA TÉCNICA - SAMSUNG GALAXY TAB S10 ULTRA
+=============================================
+
+ESPECIFICACIONES TÉCNICAS
+- Pantalla: 14.6" Dynamic AMOLED 2X, 144Hz
+- Procesador: Snapdragon 8 Gen 3 Leading Version
+- RAM: 12GB / 16GB
+- Almacenamiento: 512GB / 1TB
+- Batería: 11200mAh, carga 45W
+- Cámara principal: 13MP f/2.0
+- Cámara frontal: 13MP f/1.8 (Dual)
+- Sistema operativo: One UI for Tablet (Android 15)
+- Certificación: IP68
+- Peso: 732g
+- Conectividad: 5G (opcional), Wi-Fi 7
+
+SOLUCIONES COMUNES
+
+PROBLEMA: Batería se agota rápidamente a pesar de la capacidad grande
+SOLUCIÓN:
+1. Verificar aplicaciones pesadas: Ajustes > Batería > Uso detallado
+2. Pantalla consume 80% energía: Reducir brillo a 30-40% o usar auto-brillo
+3. Reducir frecuencia de actualización: Ajustes > Pantalla > Velocidad de actualización (cambiar a 60Hz)
+4. Desactivar 5G si no es necesario: Ajustes > Conexión > Redes móviles > 5G
+5. Activar modo ahorro de energía: Ajustes > Batería > Modo ahorro de batería
+6. Cerrar aplicaciones activas en multitarea: Deslizar hacia arriba desde botones
+
+PROBLEMA: Pantalla de 144Hz causa lag o stuttering
+SOLUCIÓN:
+1. Reducir frecuencia: Ajustes > Pantalla > Velocidad de actualización (cambiar a 120Hz o 60Hz)
+2. Cerrar aplicaciones en segundo plano
+3. Limpiar caché: Ajustes > Almacenamiento > Limpiar
+4. Actualizar software: Ajustes > Actualizaciones
+5. Desactivar efectos de sistema: Ajustes > Pantalla > Efectos de animación (Desactivar)
+6. Si lag persiste en juegos - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Pantalla táctil no responde bien
+SOLUCIÓN:
+1. Limpiar pantalla con paño microfiber (seco)
+2. Desactivar gestos: Ajustes > Pantalla > Gestos sensibles
+3. Reiniciar dispositivo
+4. En modo seguro: Mantener botón apagado > "Modo seguro" para prueba
+5. Actualizar drivers de pantalla: Ajustes > Actualizaciones
+6. Si problema persiste - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: S Pen no funciona (Tab S10 con stylus)
+SOLUCIÓN:
+1. Verificar batería de S Pen: Información de S Pen > Estado
+2. Resincronizar S Pen: Mantener botón superior durante 5 segundos
+3. Verificar distancia: S Pen funciona hasta 10mm de pantalla
+4. Limpiar punta de S Pen
+5. Restablecer S Pen: Ajustes > Funciones avanzadas > S Pen > Restablecer
+6. Si falta reconocimiento - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Reproducción de video se traba
+SOLUCIÓN:
+1. Verificar resolución: Cambiar a 720p si está en 4K
+2. Cerrar otras aplicaciones
+3. Limpiar caché de app de video: Ajustes > Aplicaciones > [App] > Almacenamiento > Borrar caché
+4. Desactivar aceleración de hardware: Ajustes > Accesibilidad > Acciones cortas > Desactivar aceleración
+5. Actualizar app de reproducción desde Play Store
+6. Si persiste en contenido local - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Altavoz dual muy bajo
+SOLUCIÓN:
+1. Verificar volumen con botones: No debe estar en 0
+2. Desactivar "Do Not Disturb": Ajustes > Notificaciones
+3. Verificar si Bluetooth está activo (podría transmitir a otro dispositivo)
+4. Limpiar rejillas de altavoz: Aire comprimido suave (2 altavoces: arriba y abajo)
+5. Desactivar ecualizador si lo hay: Ajustes > Sonido
+6. Reiniciar dispositivo
+7. Si persiste - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Cámara borrosa o sin enfoque
+SOLUCIÓN:
+1. Limpiar lentes (frontal y trasera): Paño microfiber
+2. Quitar protector si existe
+3. Ajustar manualmente: Tocar sujeto para enfoque
+4. Desactivar "Estabilización de imagen": Cámara > Configuración
+5. Mejorar iluminación en ambiente oscuro
+6. Resetear app de cámara: Ajustes > Aplicaciones > Cámara > Almacenamiento > Borrar datos
+7. Si no mejora - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Wi-Fi 7 no conecta o desconecta
+SOLUCIÓN:
+1. Usar router compatible Wi-Fi 6E/7
+2. Olvidar red y reconectar: Ajustes > Conexión > Wi-Fi > [Red] > Olvidar
+3. Cambiar a 5GHz manualmente: Router configuración
+4. Desactivar VPN: Ajustes > Conexión > VPN
+5. Actualizar firmware de router
+6. Actualizar software tablet: Ajustes > Actualizaciones
+7. Si persiste - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: No se conecta a otros dispositivos vía Bluetooth
+SOLUCIÓN:
+1. Activar Bluetooth: Ajustes > Conexión > Bluetooth
+2. Olvidar dispositivo: Ajustes > Conexión > Bluetooth > [Dispositivo] > Olvido
+3. Poner dispositivo en modo emparejamiento
+4. Reiniciar Bluetooth: Apagar/Encender
+5. Restablecer conexión Bluetooth: Ajustes > Cuentas > Restablecer Wi-Fi, móvil y Bluetooth
+6. Si sigue sin conectar - DERIVAR A SERVICIO TÉCNICO
+
+MANTENIMIENTO PREVENTIVO
+- Actualizar One UI: Ajustes > Actualizaciones (revisar mensualmente)
+- Limpiar almacenamiento: Mantener >2GB libres para funcionamiento óptimo
+- Respaldar datos: Ajustes > Cuentas > Backup
+- Ejecutar diagnóstico Samsung: Ajustes > Información > Diagnóstico
+- Usar funda protectora: Pantalla de 14.6" es sensible a golpes
+
+CARACTERÍSTICAS ESPECIALES
+- DeX Pad Integration: Transformar tablet en PC con dock
+- Multitarea avanzada: Split screen, pop-up windows
+- Samsung Notes: Toma de notas integrada con S Pen
+- Knox Security: Encriptación multinivel
+- 144Hz para contenido: Streaming en máxima fluidez
+- Altavoces Quad estéreo: Sonido envolvente

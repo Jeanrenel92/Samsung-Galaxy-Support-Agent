@@ -1,0 +1,95 @@
+GUÍA TÉCNICA - SAMSUNG GALAXY S25 ULTRA
+=========================================
+
+ESPECIFICACIONES TÉCNICAS
+- Pantalla: 6.9" Dynamic AMOLED 2X, 120Hz
+- Procesador: Snapdragon 8 Elite (con IA integrada)
+- RAM: 12GB / 16GB
+- Almacenamiento: 256GB / 512GB / 1TB
+- Batería: 5000mAh, carga 45W
+- Cámara principal: 200MP f/1.7 (ISOCELL HP2)
+- Cámara ultra angular: 50MP f/1.9
+- Cámaras telefoto: 10MP (3x), 50MP (5x)
+- Cámara frontal: 12MP f/2.2
+- Sistema operativo: One UI 7 (Android 15)
+- Certificación: IP68 (agua y polvo)
+- Peso: 218g
+
+SOLUCIONES COMUNES
+
+PROBLEMA: Batería se agota rápidamente
+SOLUCIÓN:
+1. Verificar aplicaciones en segundo plano: Ajustes > Batería > Uso de batería
+2. Reducir frecuencia de actualización de pantalla: Ajustes > Pantalla > Velocidad de actualización (cambiar a 60Hz)
+3. Activar modo ahorro de batería moderado: Ajustes > Batería > Modo ahorro de batería
+4. Desactivar servicios innecesarios: Bluetooth, GPS, Wi-Fi cuando no estén en uso
+5. Verificar sincronización en la nube: Ajustes > Cuentas > Deshabilitar sincronización automática de servicios innecesarios
+
+PROBLEMA: Pantalla toca sin razón (phantom touch)
+SOLUCIÓN:
+1. Limpiar la pantalla con paño microfiber seco
+2. Desactivar "Gestos de palma": Ajustes > Pantalla > Gestos > Desactivar
+3. Reiniciar dispositivo: Botón de encendido + volumen bajo, deslizar apagar
+4. Modo seguro: Mantener botón apagado, tocar "Modo seguro"
+5. Si persiste, posible defecto de hardware - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: No carga la batería o carga lentamente
+SOLUCIÓN:
+1. Usar adaptador original 45W certificado
+2. Limpiar puerto USB-C con aire comprimido (sin líquidos)
+3. Intentar cable diferente
+4. Reiniciar durante carga
+5. Resetear batería: Apagar, Ajustes > Sistema > Reiniciar > Reinicio completo
+6. Si no carga en absoluto - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Cámara borrosa o no enfoca
+SOLUCIÓN:
+1. Limpiar lente con paño microfiber
+2. Verificar si hay protector de cámara: remover si existe
+3. Forzar enfoque: Tocar pantalla para ajustar punto de enfoque
+4. Reiniciar aplicación de cámara: Cerrar completamente y reabrir
+5. Resetear configuración de cámara: Ajustes > Cámara > Restablecer
+6. Desactivar "IA mejora de imagen": Ajustes > Cámara > Avanzado
+7. Si persiste problema - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Wifi o Bluetooth no conectan
+SOLUCIÓN:
+1. Reiniciar dispositivo
+2. Olvida red Wi-Fi: Ajustes > Conexión > Wi-Fi > [Red] > Olvidar > Reconectar con contraseña
+3. Reiniciar router
+4. Restablecer red: Ajustes > Cuentas > Más opciones > Restablecer Wi-Fi, móvil y Bluetooth
+5. Actualizar firmware: Ajustes > Actualizaciones > Descargar e instalar
+6. Si continúa - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Teléfono se calienta excesivamente
+SOLUCIÓN:
+1. Verificar aplicaciones activas: Panel de control > Aplicaciones activas
+2. Cerrar aplicaciones pesadas (juegos, edición de video)
+3. Reducir brillo de pantalla: Bajar a 30-40%
+4. Desactivar procesamiento IA: Ajustes > IA y funciones > Desactivar Galaxy AI
+5. Apagar durante 15 minutos para enfriar
+6. No usar funda durante recarga
+7. Si sigue caliente después de inactividad - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: No reconoce SIM
+SOLUCIÓN:
+1. Extraer bandeja SIM: Usar herramienta incluida
+2. Inspeccionar contactos: Limpiar con goma suave si está sucia
+3. Reinsertar SIM correctamente (orientación correcta)
+4. Reiniciar dispositivo
+5. Cambiar bandeja SIM si está dañada
+6. Contactar con operador para validar plan
+7. Si problema persiste - DERIVAR A SERVICIO TÉCNICO
+
+MANTENIMIENTO PREVENTIVO
+- Actualizar One UI: Ajustes > Actualizaciones > Información > Actualizaciones de software
+- Limpiar almacenamiento: Ajustes > Almacenamiento > Limpiar archivos residuales
+- Ejecutar diagnóstico: Ajustes > Información > Diagnóstico Samsung
+- Respaldar datos: Ajustes > Cuentas > Backup e Restauración
+
+CARACTERÍSTICAS ESPECIALES
+- S Pen integrado: Sensibilidad 4096 niveles (S25 Ultra exclusivo)
+- Galaxy AI: Asistencia con IA para fotografía, escritura y productividad
+- Vínculo con Samsung SmartThings: Control de dispositivos inteligentes
+- Samsung DeX: Experiencia tipo escritorio con monitor externo
+- Knox Security: Encriptación a nivel de hardware

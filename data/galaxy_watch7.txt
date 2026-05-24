@@ -1,0 +1,129 @@
+GUÍA TÉCNICA - SAMSUNG GALAXY WATCH7
+=====================================
+
+ESPECIFICACIONES TÉCNICAS
+- Pantalla: 1.5" AMOLED, 480x480px
+- Procesador: Exynos W1000
+- RAM: 2GB
+- Almacenamiento: 16GB
+- Batería: 425mAh, duración 2-3 días
+- Sistema operativo: Wear OS 4 (Android-based)
+- Sensores: Frecuencia cardíaca, SpO2, temperatura, estrés
+- Certificación: 5 ATM (sumergible hasta 50m)
+- Peso: 40g (sin banda)
+- Conectividad: Bluetooth 5.4, NFC, GPS, Wi-Fi
+
+SOLUCIONES COMUNES
+
+PROBLEMA: Batería se descarga en menos de 1 día
+SOLUCIÓN:
+1. Desactivar siempre pantalla activa: Ajustes > Pantalla > Siempre activa (OFF)
+2. Reducir brillo: Ajustes > Pantalla > Brillo (cambiar a 20-30%)
+3. Desactivar GPS continuo: Solo activar cuando ejercites
+4. Desactivar Wi-Fi: Usar Bluetooth solamente
+5. Desactivar monitoreo continuo de frecuencia cardíaca: Ajustes > Salud
+6. Cerrar aplicaciones activas: Manteniendo botón superior
+7. Modo batería larga: Ajustes > Batería > Modo de duración
+
+PROBLEMA: No se sincroniza con teléfono
+SOLUCIÓN:
+1. Activar Bluetooth en ambos dispositivos
+2. Abrir app Galaxy Wearable en teléfono
+3. Olvidar reloj: App Wearable > Desconectar > Olvidar
+4. Buscar nuevamente: App Wearable > Buscar reloj
+5. Mantener reloj y teléfono cerca (máximo 10m)
+6. Reiniciar ambos dispositivos
+7. Actualizar app Galaxy Wearable desde Play Store
+8. Si persiste - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Pantalla táctil no responde
+SOLUCIÓN:
+1. Limpiar pantalla: Paño microfiber seco
+2. Remover protectores de pantalla si existen
+3. Recalibrar pantalla: Mantener botón superior 5 segundos > Encender
+4. Usar bisel giratorio: Algunos modelos usan bisel para navegación
+5. Reiniciar reloj: Mantener botón superior hasta apagarse
+6. Modo seguro: Durante reinicio, tocar pantalla cuando logo aparece
+7. Si no responde - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Monitor de frecuencia cardíaca no funciona
+SOLUCIÓN:
+1. Ajuste correcto: Banda debe estar firme pero no apretada
+2. Colocar donde pueda detectar pulso (muñeca interna)
+3. Limpiar sensores: Paño húmedo ligeramente
+4. Esperar 5-10 segundos para lectura (no es instantáneo)
+5. Desactivar/Activar: Ajustes > Salud > Monitor de frecuencia cardíaca
+6. Reiniciar reloj si lecturas son erráticas
+7. Si muestra error consistente - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: SpO2 (saturación de oxígeno) no se mide
+SOLUCIÓN:
+1. Calibración necesaria: Esperar 30-40 segundos para lectura
+2. Posición correcta: Reloj debe estar centrado en muñeca
+3. Movimiento interfiere: Mantener quieto durante medición
+4. Actualizar app: Galaxy Wearable debe estar actualizada
+5. Verificar permisos: Acceso a datos de salud
+6. Si se niega a medir - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Reloj no carga o carga muy lentamente
+SOLUCIÓN:
+1. Usar cargador inductor original Samsung
+2. Limpiar contactos de carga: Paño seco, sin agua
+3. Alineación correcta en base de carga: LED indicador debe verse
+4. Cargador conectado a puerto USB 5V mínimo 500mA
+5. Desactivar mientras carga para acelerar
+6. Temperatura ambiente 10-35°C durante carga
+7. Si no carga en absoluto - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Aplicaciones se cargan lentamente o se congelan
+SOLUCIÓN:
+1. Cerrar todas las aplicaciones activas
+2. Reiniciar reloj: Mantener botón superior
+3. Limpiar caché: Ajustes > Almacenamiento > Borrar caché
+4. Desinstalar aplicaciones innecesarias: Liberar espacio
+5. Actualizar Wear OS: Ajustes > Sistema > Actualizaciones
+6. Actualizar aplicaciones: Play Store en reloj o teléfono
+7. Si congelación persiste - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: GPS no funciona o es inexacto
+SOLUCIÓN:
+1. Activar GPS: Ajustes > Conectividad > GPS
+2. Estar al aire libre: GPS necesita cielo abierto
+3. Esperar 30 segundos para primer fix (más lento en reloj)
+4. Desactivar GPS del teléfono si compites: Para que reloj use su propio GPS
+5. Actualizar mapas: Aplicación de entrenamiento > Descargar mapas offline
+6. Si siempre es impreciso - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Llamadas o notificaciones no llegan
+SOLUCIÓN:
+1. Verificar sincronización con teléfono: App Wearable
+2. Verificar permisos: Ajustes > Aplicaciones > Permisos > Notificaciones
+3. Desactivar "No molestar": Ajustes > Sonido y vibración
+4. Activar notificaciones por app: Ajustes > Notificaciones
+5. Reiniciar conexión Bluetooth: Apagar/Encender
+6. Si otros contactos llaman correctamente, podría ser red del teléfono
+
+PROBLEMA: Banda está incómoda o causan irritación
+SOLUCIÓN:
+1. Ajustar posición: Mantener a 1cm de muñeca
+2. Usar banda alternativa: Samsung vende bandas de repuesto
+3. Limpiar diariamente: Agua jabonosa suave
+4. Secar completamente antes de usar
+5. Cambiarse a otra muñeca si irritación persiste
+6. Usar protector de piel: Películas protectoras disponibles
+
+MANTENIMIENTO PREVENTIVO
+- Actualizar Wear OS: Ajustes > Sistema > Actualizaciones (mensualmente)
+- Limpiar sensores: Una vez por semana con paño suave
+- Cargar cuando esté en 20%: Mejor para vida útil de batería
+- Usar cargador original: Evita problemas de carga
+- Respaldar datos: App Galaxy Wearable > Configuración > Respaldar
+- Reemplazar banda cada 1-2 años: Material se degrada
+
+CARACTERÍSTICAS ESPECIALES
+- Monitor de salud integral: Frecuencia cardíaca, SpO2, temperatura, estrés
+- Samsung Health Integration: Seguimiento de ejercicio completo
+- NFC para pagos: Samsung Pay en reloj
+- Modo natación: Sumergible hasta 50m
+- Detección de caídas: Alerta automática si caída se detecta
+- Toma de llamadas: Micrófono y altavoz integrados

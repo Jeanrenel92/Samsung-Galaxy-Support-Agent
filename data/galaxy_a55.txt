@@ -1,0 +1,106 @@
+GUÍA TÉCNICA - SAMSUNG GALAXY A55
+==================================
+
+ESPECIFICACIONES TÉCNICAS
+- Pantalla: 6.4" AMOLED, 90Hz
+- Procesador: Exynos 1480
+- RAM: 8GB
+- Almacenamiento: 128GB / 256GB
+- Batería: 5000mAh, carga 25W
+- Cámara principal: 50MP f/1.8
+- Cámara ultra angular: 12MP f/2.2
+- Cámara macro: 5MP f/2.4
+- Cámara frontal: 32MP f/2.2
+- Sistema operativo: One UI 6 (Android 14)
+- Certificación: IP67 (agua a 1.5m/30min)
+- Peso: 213g
+
+SOLUCIONES COMUNES
+
+PROBLEMA: Batería descarga rápidamente
+SOLUCIÓN:
+1. Verificar consumo: Ajustes > Batería > Uso de batería por aplicación
+2. Desactivar Location Services frecuentemente: Ajustes > Privacidad > Ubicación
+3. Reducir frecuencia de pantalla: Ajustes > Pantalla > Velocidad de actualización (cambiar a 60Hz)
+4. Activar modo ahorro de energía: Ajustes > Batería > Modo ahorro de batería (Moderado o Máximo)
+5. Desactivar sincronización automática: Ajustes > Cuentas > Sincronización automática
+6. Cerrar aplicaciones en segundo plano no utilizadas
+
+PROBLEMA: No carga o carga lenta
+SOLUCIÓN:
+1. Usar adaptador 25W original o certificado
+2. Limpiar puerto USB-C: Aire comprimido (sin agua)
+3. Probar con cable diferente (certificado Samsung)
+4. Reiniciar durante carga
+5. Verificar temperatura: Enfriar dispositivo si está muy caliente
+6. Desactivar carga rápida si hay problemas recurrentes: Ajustes > Batería > Carga rápida (desactivar)
+7. Si no responde - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Pantalla tiene colores extraños o se ve roja/azul
+SOLUCIÓN:
+1. Reiniciar dispositivo
+2. Desactivar modo de luz nocturna: Ajustes > Pantalla > Luz de protección ocular (desactivar)
+3. Restablecer color de pantalla: Ajustes > Pantalla > Modo de color (seleccionar "Vívido" o "Natural")
+4. Actualizar software: Ajustes > Actualizaciones
+5. Si persiste - DERIVAR A SERVICIO TÉCNICO (posible defecto de pantalla)
+
+PROBLEMA: Cámara no toma fotos claras
+SOLUCIÓN:
+1. Limpiar lente con paño microfiber
+2. Remover protector de cámara si existe
+3. Desactivar modo de noche automático: Cámara > Configuración > IA Noche (desactivar)
+4. Mejorar iluminación en ambiente oscuro
+5. Ajustar exposición: Tocar en pantalla para enfoque manual
+6. Resetear app de cámara: Ajustes > Aplicaciones > Cámara > Almacenamiento > Borrar caché
+7. Si no mejora - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Conexión Wi-Fi lenta o inestable
+SOLUCIÓN:
+1. Acercarse al router
+2. Olvidar red y reconectar: Ajustes > Conexión > Wi-Fi > [Red] > Olvidar
+3. Cambiar banda de frecuencia: Router > Cambiar a 5GHz (si está disponible)
+4. Desactivar VPN si está activa: Ajustes > Conexión > VPN
+5. Actualizar drivers de Wi-Fi: Ajustes > Actualizaciones
+6. Reiniciar router
+7. Si problema persiste - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Teléfono se reinicia sin razón
+SOLUCIÓN:
+1. Verificar espacio de almacenamiento: Debe tener >500MB libre (Ajustes > Almacenamiento)
+2. Desinstalar aplicaciones problemáticas descargadas recientemente
+3. Actualizar all apps: Google Play > Mi perfil > Administrar apps > Actualizar todo
+4. Modo seguro: Mantener botón apagado, tocar "Modo seguro"
+5. Si problema está en modo seguro, es error de software: Hacer reset de fábrica
+6. Si continúa en modo seguro - DERIVAR A SERVICIO TÉCNICO (posible defecto de hardware)
+
+PROBLEMA: Micrófono no funciona
+SOLUCIÓN:
+1. Verificar permisos de micrófono: Ajustes > Privacidad > Permisos > Micrófono
+2. Limpiar puertos de micrófono (inferior y superior): Aire comprimido
+3. Probar en aplicación diferente (Grabadora, WhatsApp, etc.)
+4. Desactivar reducción de ruido: Ajustes > Sonido y vibración > Reducción de ruido (desactivar)
+5. Si otro micrófono funciona - DERIVAR A SERVICIO TÉCNICO
+
+PROBLEMA: Altavoz muy bajo o sin sonido
+SOLUCIÓN:
+1. Verificar volumen: Usar botones de volumen, revisar que no esté en 0
+2. Desactivar Bluetooth: Podría estar transmitiendo a otro dispositivo
+3. Desactivar "Do Not Disturb": Ajustes > Notificaciones
+4. Limpiar rejilla de altavoz: Aire comprimido suave
+5. Reiniciar dispositivo
+6. Restablecer configuración de sonido: Ajustes > Sonido y vibración > Restablecer
+7. Si persiste - DERIVAR A SERVICIO TÉCNICO
+
+MANTENIMIENTO PREVENTIVO
+- Actualizar One UI: Ajustes > Actualizaciones
+- Limpiar almacenamiento cada mes: Eliminar archivos innecesarios
+- Ejecutar diagnóstico: Ajustes > Información > Diagnóstico Samsung
+- Respaldar datos regularmente: Ajustes > Cuentas > Backup
+- Usar funda protectora: A55 es IP67 pero no es sumergible más allá de 1.5m
+
+CARACTERÍSTICAS ESPECIALES
+- Nightography: Fotografía nocturna mejorada
+- Procesamiento de video: Grabación en 4K
+- Samsung SmartThings: Control de dispositivos inteligentes
+- Knox: Seguridad a nivel de hardware
+- One UI: Interfaz enfocada en productividad
