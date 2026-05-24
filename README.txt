@@ -62,7 +62,7 @@ proyecto/
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/Jeanrenel92/AGENT-LLM
+git clone https://github.com/Jeanrenel92/Samsung-Galaxy-Support-Agent
 cd samsung-support-agent
 
 # 2. Crear entorno virtual
