@@ -7,8 +7,8 @@ import logging
 import hashlib
 from datetime import datetime
 from collections import Counter
-from dataclasses import dataclass, field
-from typing import Optional, Dict, Any, List
+
+import pandas as pd
 
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage, BaseMessage
@@ -20,12 +20,8 @@ from engine.utils import (
     is_samsung_related,
     normalize_text,
 )
+# CONFIGURACIÓN DE LOGGING
 
-# ============================================
-# IL3.1: OBSERVABILIDAD Y MÉTRICAS
-# ============================================
-
-# Configuración de logging para archivo y consola
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s | %(levelname)s | %(message)s',
@@ -36,8 +32,95 @@ logging.basicConfig(
 )
 logger = logging.getLogger("SamsungAgent")
 
+# SISTEMA DE TRAZABILIDAD PASO A PASO
+class StepTracer:
+    """
+    Registra cada paso de ejecución del agente en formato tabla.
+    Muestra: step, tipo, input, output, latencia, tokens, estado
+    """
+    
+    def __init__(self):
+        self.executions = []
+        self.current_execution = []
+        self.current_query = ""
+    
+    def start_execution(self, query: str):
+        """Inicia una nueva ejecución para una consulta"""
+        self.current_query = query
+        self.current_execution = []
+    
+    def add_step(self, step: int, tipo: str, input_text: str, output_text: str, 
+                 latency: float, tokens: int = 0, status: str = "ok"):
+        """Agrega un paso a la ejecución actual"""
+        # Truncar textos largos
+        input_truncado = input_text[:80] + "..." if len(input_text) > 80 else input_text
+        output_truncado = output_text[:80] + "..." if len(output_text) > 80 else output_text
+        
+        paso = {
+            "step": step,
+            "tipo": tipo,
+            "input": input_truncado,
+            "output": output_truncado,
+            "latencia": f"{latency:.2f}s",
+            "tokens": tokens,
+            "estado": status,
+        }
+        self.current_execution.append(paso)
+    
+    def end_execution(self):
+        """Finaliza la ejecución actual y la guarda"""
+        if self.current_execution:
+            self.executions.append({
+                "query": self.current_query,
+                "steps": self.current_execution.copy(),
+                "timestamp": datetime.now().isoformat(),
+            })
+        self.current_query = ""
+        self.current_execution = []
+    
+    def print_execution(self, query: str = None):
+        """Imprime la trazabilidad en formato tabla"""
+        executions_to_show = self.executions
+        if query:
+            executions_to_show = [e for e in self.executions if query.lower() in e["query"].lower()]
+        
+        for execution in executions_to_show:
+            print(f"\n=== Ejecución para pregunta: {execution['query']}")
+            print(f"{'step':<6} {'tipo':<14} {'input':<45} {'output':<45} {'latencia':<10} {'tokens':<8} {'estado':<8}")
+            print("-" * 150)
+            
+            for step in execution["steps"]:
+                print(f"{step['step']:<6} {step['tipo']:<14} {step['input']:<45} {step['output']:<45} {step['latencia']:<10} {step['tokens']:<8} {step['estado']:<8}")
+            
+            print("-" * 150)
+    
+    def to_dataframe(self) -> pd.DataFrame:
+        """Convierte todas las ejecuciones a un DataFrame"""
+        all_steps = []
+        for execution in self.executions:
+            for step in execution["steps"]:
+                step_with_query = step.copy()
+                step_with_query["query"] = execution["query"]
+                all_steps.append(step_with_query)
+        
+        if not all_steps:
+            return pd.DataFrame()
+        
+        df = pd.DataFrame(all_steps)
+        return df[["query", "step", "tipo", "input", "output", "latencia", "tokens", "estado"]]
+    
+    def save_to_csv(self, filename: str = "trazabilidad_agente.csv"):
+        """Guarda la trazabilidad en archivo CSV"""
+        df = self.to_dataframe()
+        if not df.empty:
+            df.to_csv(filename, index=False, encoding='utf-8')
+            print(f"✅ Trazabilidad guardada en '{filename}'")
+        else:
+            print("⚠️ No hay datos para guardar")
+
+# MÉTRICAS DE OBSERVABILIDAD
 class MetricsTracker:
-    """Registra y calcula métricas del agente (IL3.1)"""
+    """Registra y calcula métricas de rendimiento del agente"""
     
     def __init__(self):
         self.queries_count = 0
@@ -68,13 +151,8 @@ class MetricsTracker:
         avg_length = sum(self.response_lengths) / len(self.response_lengths)
         uptime = (datetime.now() - self.start_time).total_seconds() / 3600
         
-        # Intent más común
         intent_freq = Counter(self.intents_used).most_common(1)[0] if self.intents_used else ("N/A", 0)
-        
-        # Modelo más consultado
         model_freq = Counter(self.models_detected).most_common(1)[0] if self.models_detected else ("N/A", 0)
-        
-        # Tasa de error
         error_rate = (self.errors_count / self.queries_count) * 100
         
         return {
@@ -106,106 +184,17 @@ class MetricsTracker:
         print(f"Tasa de error: {m['error_rate_pct']}%")
         print("="*50)
 
-
-# ============================================
-# IL3.2: TRAZABILIDAD Y ANÁLISIS DE LOGS
-# ============================================
-
-class TraceLogger:
-    """Registra trazabilidad de cada ejecución (IL3.2)"""
-    
-    def __init__(self):
-        self.traces = []
-    
-    def create_trace(self, query, intent, model, response, duration, errors=None):
-        """Crea un registro de trazabilidad"""
-        trace = {
-            "trace_id": hashlib.md5(f"{datetime.now()}{query}".encode()).hexdigest()[:10],
-            "timestamp": datetime.now().isoformat(),
-            "query_hash": hashlib.md5(query.encode()).hexdigest()[:8],
-            "query_preview": query[:80] + "..." if len(query) > 80 else query,
-            "intent": intent,
-            "model_detected": model or "Ninguno",
-            "response_preview": response[:80] + "..." if len(response) > 80 else response,
-            "response_length": len(response),
-            "duration_ms": round(duration * 1000, 2),
-            "errors": errors or [],
-        }
-        
-        self.traces.append(trace)
-        logger.info(f"🔍 Traza: {json.dumps(trace, ensure_ascii=False)}")
-        return trace
-    
-    def analyze_traces(self):
-        """Analiza las trazas para encontrar patrones (IL3.2)"""
-        if not self.traces:
-            return "Sin trazas para analizar."
-        
-        # Errores más comunes
-        error_traces = [t for t in self.traces if t["errors"]]
-        
-        # Intents con más errores
-        intent_errors = {}
-        for t in error_traces:
-            intent = t["intent"]
-            intent_errors[intent] = intent_errors.get(intent, 0) + 1
-        
-        # Tiempos de respuesta lentos
-        slow_traces = [t for t in self.traces if t["duration_ms"] > 3000]
-        
-        # Consultas más frecuentes (por hash)
-        query_hashes = Counter(t["query_hash"] for t in self.traces)
-        repeated = {h: c for h, c in query_hashes.items() if c > 1}
-        
-        analysis = {
-            "total_traces": len(self.traces),
-            "traces_with_errors": len(error_traces),
-            "intents_with_most_errors": intent_errors,
-            "slow_responses": len(slow_traces),
-            "repeated_queries": len(repeated),
-        }
-        
-        logger.info(f"📈 Análisis de trazas: {json.dumps(analysis, ensure_ascii=False)}")
-        return analysis
-    
-    def print_analysis(self):
-        """Imprime análisis en formato legible"""
-        a = self.analyze_traces()
-        if isinstance(a, str):
-            print(a)
-            return
-        
-        print("\n" + "="*50)
-        print("🔍 ANÁLISIS DE TRAZAS")
-        print("="*50)
-        print(f"Total de trazas: {a['total_traces']}")
-        print(f"Trazas con errores: {a['traces_with_errors']}")
-        print(f"Respuestas lentas (>3s): {a['slow_responses']}")
-        print(f"Consultas repetidas: {a['repeated_queries']}")
-        
-        if a["intents_with_most_errors"]:
-            print("\nIntenciones con más errores:")
-            for intent, count in a["intents_with_most_errors"].items():
-                print(f"  - {intent}: {count} errores")
-        print("="*50)
-
-
-# ============================================
-# IL3.3: SEGURIDAD Y USO RESPONSABLE
-# ============================================
-
+# SEGURIDAD Y USO RESPONSABLE
 class SecurityGuard:
-    """Implementa controles de seguridad y ética (IL3.3)"""
+    """Implementa controles de seguridad, privacidad y ética"""
     
     def __init__(self):
-        # Palabras clave bloqueadas por razones éticas
         self.blocked_keywords = [
             "hackear", "hackeo", "contraseña de otro",
             "espiar", "rastrear sin permiso", "ilegal",
             "desbloquear imei", "bypass", "root sin permiso",
         ]
         
-        # Patrones de datos personales
         self.pii_patterns = [
             (r'\b\d{3}[-.]?\d{2}[-.]?\d{4}\b', '[NÚMERO-SEGURO-SOCIAL]'),
             (r'\b\d{16}\b', '[TARJETA-CRÉDITO]'),
@@ -214,7 +203,6 @@ class SecurityGuard:
             (r'\b\d{15,16}\b', '[IMEI]'),
         ]
         
-        # Patrones de inyección
         self.injection_patterns = [
             r'ignor(a|á)\s+(las?\s+)?instrucciones',
             r'system\s*prompt',
@@ -246,21 +234,18 @@ class SecurityGuard:
         """Verifica si la consulta es segura y ética"""
         query_lower = query.lower()
         
-        # 1. Verificar palabras bloqueadas
         for keyword in self.blocked_keywords:
             if keyword in query_lower:
                 self.blocked_count += 1
                 logger.warning(f"⚠️ Consulta bloqueada por keyword: '{keyword}'")
                 return False, "No puedo ayudar con esa solicitud por razones de seguridad y ética."
         
-        # 2. Verificar intentos de inyección
         for pattern in self.injection_patterns:
             if re.search(pattern, query_lower):
                 self.injection_attempts += 1
                 logger.warning("⚠️ Posible intento de inyección detectado")
                 return False, "Lo siento, no puedo procesar esa consulta."
         
-        # 3. Verificar longitud
         if len(query) > 500:
             return False, "La consulta es demasiado larga. Por favor, resúmela."
         
@@ -274,17 +259,13 @@ class SecurityGuard:
             "intentos_inyeccion": self.injection_attempts,
         }
 
-
-# ============================================
-# IL3.4: MEJORA CONTINUA Y ESCALABILIDAD
-# ============================================
-
+# ANÁLISIS PARA MEJORA CONTINUA
 class ImprovementAnalyzer:
-    """Analiza datos para proponer mejoras (IL3.4)"""
+    """Analiza datos para proponer mejoras basadas en evidencia"""
     
-    def __init__(self, metrics: MetricsTracker, traces: TraceLogger):
+    def __init__(self, metrics: MetricsTracker, tracer: StepTracer):
         self.metrics = metrics
-        self.traces = traces
+        self.tracer = tracer
     
     def generate_recommendations(self):
         """Genera recomendaciones basadas en datos observados"""
@@ -294,21 +275,18 @@ class ImprovementAnalyzer:
         
         recommendations = []
         
-        # 1. Latencia
         if m["avg_response_ms"] > 3000:
             recommendations.append(
                 "⚠️ Latencia alta (>3s). Considerar: reducir MAX_RESPONSE_TOKENS, "
                 "usar caché para consultas frecuentes, o simplificar el SYSTEM_PROMPT."
             )
         
-        # 2. Tasa de error
         if m["error_rate_pct"] > 10:
             recommendations.append(
                 "⚠️ Tasa de error elevada (>10%). Revisar logs de errores y "
                 "mejorar el manejo de excepciones en el pipeline."
             )
         
-        # 3. Volumen de consultas
         if m["total_queries"] > 100:
             recommendations.append(
                 "📈 Volumen creciente de consultas. Recomendaciones de escalabilidad:\n"
@@ -317,15 +295,17 @@ class ImprovementAnalyzer:
                 "  - Considerar balanceo de carga si se despliega en producción."
             )
         
-        # 4. Consultas repetidas
-        analysis = self.traces.analyze_traces()
-        if isinstance(analysis, dict) and analysis.get("repeated_queries", 0) > 5:
-            recommendations.append(
-                f"🔄 {analysis['repeated_queries']} consultas repetidas detectadas. "
-                "Implementar caché de respuestas para consultas idénticas."
-            )
+        # Analizar trazas para consultas repetidas
+        df = self.tracer.to_dataframe()
+        if not df.empty:
+            repeated = df['query'].value_counts()
+            repeated_count = (repeated > 1).sum()
+            if repeated_count > 5:
+                recommendations.append(
+                    f"🔄 {repeated_count} consultas repetidas detectadas. "
+                    "Implementar caché de respuestas para consultas idénticas."
+                )
         
-        # 5. Variedad de intenciones
         if len(set(self.metrics.intents_used)) < 3 and m["total_queries"] > 20:
             recommendations.append(
                 "💡 Poca variedad de intenciones detectadas. Revisar CLASSIFIER_PROMPT "
@@ -347,10 +327,7 @@ class ImprovementAnalyzer:
             print(f"\n{i}. {rec}")
         print("="*50)
 
-
-# ============================================
 # CONSTANTES
-# ============================================
 
 MAX_HISTORY_MESSAGES = 10
 MAX_RETRIES = 3
@@ -401,10 +378,7 @@ SMALL_TALK = {
     ]
 }
 
-
-# ============================================
 # FUNCIONES AUXILIARES
-# ============================================
 
 def _is_small_talk(query_norm):
     clean = re.sub(r"[^\w\s]", "", query_norm).strip()
@@ -441,35 +415,25 @@ def _truncate_response(response, max_chars=MAX_RESPONSE_CHARS):
     last_space = truncated.rfind(' ')
     return response[:last_space] + '...' if last_space > 0 else truncated + '...'
 
-
-# ============================================
-# AGENTE PRINCIPAL
-# ============================================
-
+# AGENTE PRINCIPAL CON TRAZABILIDAD
 class AgentOrchestrator:
     """
     Agente Samsung Galaxy con:
-    - Métricas de observabilidad
-    - Trazabilidad de ejecuciones
-    - Seguridad y uso responsable
-    - Análisis para mejora continua
+    - Trazabilidad paso a paso (StepTracer)
+    - Métricas de observabilidad (MetricsTracker)
+    - Seguridad y uso responsable (SecurityGuard)
+    - Análisis para mejora continua (ImprovementAnalyzer)
     """
     
     def __init__(self, vectorstore):
         self.vectorstore = vectorstore
         self.retry_count = 0
         
-        # IL3.1: Métricas
+        # Sistemas de observabilidad
+        self.step_tracer = StepTracer()
         self.metrics = MetricsTracker()
-        
-        # IL3.2: Trazabilidad
-        self.tracer = TraceLogger()
-        
-        # IL3.3: Seguridad
         self.security = SecurityGuard()
-        
-        # IL3.4: Mejora continua
-        self.improvement = ImprovementAnalyzer(self.metrics, self.tracer)
+        self.improvement = ImprovementAnalyzer(self.metrics, self.step_tracer)
         
         # LLMs
         self.llm = ChatOpenAI(
@@ -491,22 +455,19 @@ class AgentOrchestrator:
         )
         
         self.memory = ChatMessageHistory()
-        
-        logger.info("🤖 Agente inicializado")
+        logger.info("🤖 Agente inicializado con trazabilidad paso a paso")
 
-    #SEGURIDAD
+    # ========== SEGURIDAD ==========
     
     def _check_security(self, query):
-        """Aplica controles de seguridad a la consulta"""
+        """Aplica controles de seguridad"""
         is_safe, reason = self.security.is_safe(query)
         if not is_safe:
-            logger.warning(f"⚠️ Consulta bloqueada: {reason}")
             return False, reason, query
-        
         sanitized, had_pii = self.security.sanitize(query)
         return True, "OK", sanitized
 
-    #DETECCIÓN Y CLASIFICACIÓN
+    # ========== DETECCIÓN Y CLASIFICACIÓN ==========
     
     def detect_model(self, query):
         model = extract_model_from_query(query)
@@ -541,7 +502,7 @@ class AgentOrchestrator:
             return {"intent": "consulta_tecnica" if modelo else "general",
                     "modelo_detectado": modelo, "confianza": "baja"}
 
-    #PLANIFICACIÓN Y EJECUCIÓN
+    # ========== PLANIFICACIÓN Y EJECUCIÓN ==========
     
     def plan_tasks(self, intent, modelo):
         if intent in ("solo_modelo", "general", "fuera_contexto"):
@@ -562,7 +523,6 @@ class AgentOrchestrator:
             messages = [SystemMessage(content=SYSTEM_PROMPT)] + [HumanMessage(content=query)]
             return self._stream_response(messages)
         
-        # Con contexto
         search_query = query
         if modelo and modelo.lower() not in query.lower():
             search_query = f"{modelo} {query}"
@@ -588,7 +548,7 @@ class AgentOrchestrator:
 
     def _handle_solo_modelo(self, modelo):
         if modelo:
-            return f"¡El {modelo} es un gran equipo! ¿En qué necesitas ayuda?"
+            return f"¡El {modelo} es un gran equipo! 😊 ¿En qué necesitas ayuda?"
         return "¿Sobre qué modelo Samsung necesitas ayuda?"
 
     def _should_escalate(self, response):
@@ -597,8 +557,6 @@ class AgentOrchestrator:
         no_res = ["no puedo", "no tengo suficiente", "no encuentro"]
         return any(p in response.lower() for p in no_res)
 
-    # ========== STREAMING ==========
-    
     def _stream_response(self, messages):
         response_text = ""
         try:
@@ -613,55 +571,140 @@ class AgentOrchestrator:
             response_text = "Error al generar respuesta. ¿Reintentamos?"
         return _truncate_response(response_text)
 
-    #HANDLER PRINCIPAL
+    # ========== HANDLER PRINCIPAL CON TRAZABILIDAD ==========
     
-    def handle_query(self, query):
+    def handle_query(self, query: str) -> str:
         """
-        Procesa la consulta completa con:
-        - Seguridad
-        - Métricas
-        - Trazabilidad
+        Procesa la consulta completa registrando cada paso.
         """
-        start_time = time.time()
+        total_start = time.time()
+        step_counter = 0
         errors = []
         
-        #Seguridad
-        is_safe, reason, query = self._check_security(query)
+        # Iniciar trazabilidad
+        self.step_tracer.start_execution(query)
+        
+        # ===== PASO 0: SEGURIDAD =====
+        t_start = time.time()
+        is_safe, reason, sanitized_query = self._check_security(query)
+        latency = time.time() - t_start
+        
+        self.step_tracer.add_step(
+            step=step_counter,
+            tipo="security",
+            input_text=f"Verificar seguridad: {query[:60]}...",
+            output_text=reason,
+            latency=latency,
+            tokens=0,
+            status="ok" if is_safe else "error"
+        )
+        step_counter += 1
+        
         if not is_safe:
-            duration = time.time() - start_time
+            duration = time.time() - total_start
             self.metrics.register_query(
                 intent="bloqueado", model="N/A",
                 response_length=len(reason), duration=duration, has_error=True
             )
-            self.tracer.create_trace(
-                query=query, intent="bloqueado", model="N/A",
-                response=reason, duration=duration, errors=["consulta_bloqueada"]
-            )
+            self.step_tracer.end_execution()
             return reason
         
-        #Clasificación
+        query = sanitized_query
+        
         try:
             query_norm = normalize_text(query.strip())
             
             if _is_model_only_query(query_norm):
                 self.retry_count = 0
             
-            # Expandir queries cortas
+            # ===== PASO 1: DETECCIÓN DE MODELO =====
+            t_start = time.time()
+            modelo = self.detect_model(query)
+            latency = time.time() - t_start
+            
+            self.step_tracer.add_step(
+                step=step_counter,
+                tipo="tool",
+                input_text=f"Detectar modelo: {query[:60]}...",
+                output_text=modelo or "Ninguno",
+                latency=latency,
+                tokens=0,
+                status="ok"
+            )
+            step_counter += 1
+            
+            # Recuperar último modelo del historial
             ultimo_modelo = self._get_last_model()
             query_expanded = query
-            if ultimo_modelo and not self.detect_model(query) and not _is_small_talk(query_norm):
+            if ultimo_modelo and not modelo and not _is_small_talk(query_norm):
                 query_expanded = f"{ultimo_modelo} {query}"
+                modelo = ultimo_modelo
             
+            # ===== PASO 2: CLASIFICACIÓN =====
+            t_start = time.time()
             classification = self.classify_intent(query_expanded)
+            latency = time.time() - t_start
             intent = classification["intent"]
-            modelo = classification["modelo_detectado"]
             
             if not modelo and ultimo_modelo:
                 modelo = ultimo_modelo
             
-            # === Ejecución ===
+            self.step_tracer.add_step(
+                step=step_counter,
+                tipo="classification",
+                input_text=f"Clasificar intención: {query_expanded[:60]}...",
+                output_text=f"Intención: {intent} | Modelo: {modelo or 'N/A'} | Confianza: {classification['confianza']}",
+                latency=latency,
+                tokens=0,
+                status="ok"
+            )
+            step_counter += 1
+            
+            # ===== PASO 3: RECUPERACIÓN DE CONTEXTO (si aplica) =====
             plan = self.plan_tasks(intent, modelo)
+            context_chars = 0
+            
+            if intent not in ("solo_modelo", "general", "fuera_contexto"):
+                t_start = time.time()
+                search_query = query
+                if modelo and modelo.lower() not in query.lower():
+                    search_query = f"{modelo} {query}"
+                
+                context = retrieve_context(
+                    query=search_query,
+                    vectorstore=self.vectorstore,
+                    modelo=modelo,
+                )
+                latency = time.time() - t_start
+                context_chars = len(context)
+                
+                self.step_tracer.add_step(
+                    step=step_counter,
+                    tipo="retrieval",
+                    input_text=f"Buscar en FAISS: {search_query[:60]}...",
+                    output_text=f"Recuperados {context_chars} caracteres ({context.count(chr(10))+1} fragmentos)",
+                    latency=latency,
+                    tokens=0,
+                    status="ok"
+                )
+                step_counter += 1
+            
+            # ===== PASO 4: GENERACIÓN DE RESPUESTA (LLM) =====
+            t_start = time.time()
             response = self.execute_plan(plan, query, intent, modelo)
+            latency = time.time() - t_start
+            estimated_tokens = len(response.split())
+            
+            self.step_tracer.add_step(
+                step=step_counter,
+                tipo="llm",
+                input_text=f"Generar respuesta para: {query[:60]}...",
+                output_text=response[:80] + "..." if len(response) > 80 else response,
+                latency=latency,
+                tokens=estimated_tokens,
+                status="ok"
+            )
+            step_counter += 1
             
         except Exception as e:
             errors.append(str(e))
@@ -670,9 +713,11 @@ class AgentOrchestrator:
             modelo = None
             logger.error(f"Error: {e}")
         
-        #Registrar métricas y traza
-        duration = time.time() - start_time
+        # ===== FINALIZAR TRAZABILIDAD =====
+        duration = time.time() - total_start
+        self.step_tracer.end_execution()
         
+        # Registrar métricas
         self.metrics.register_query(
             intent=intent,
             model=modelo,
@@ -681,16 +726,7 @@ class AgentOrchestrator:
             has_error=bool(errors)
         )
         
-        self.tracer.create_trace(
-            query=query,
-            intent=intent,
-            model=modelo,
-            response=response,
-            duration=duration,
-            errors=errors
-        )
-        
-        #Actualizar memoria
+        # Actualizar memoria
         self.memory.add_user_message(query)
         self.memory.add_ai_message(response)
         
@@ -708,53 +744,69 @@ class AgentOrchestrator:
                     return detected
         return None
 
-    # ========== MEJORA CONTINUA ==========
+    # ========== MÉTODOS DE OBSERVABILIDAD ==========
+    
+    def mostrar_trazabilidad(self, query: str = None):
+        """Muestra la tabla de trazabilidad paso a paso"""
+        self.step_tracer.print_execution(query)
+    
+    def guardar_trazabilidad(self, filename: str = "trazabilidad_agente.csv"):
+        """Guarda la trazabilidad en archivo CSV"""
+        self.step_tracer.save_to_csv(filename)
+    
+    def get_trazabilidad_dataframe(self) -> pd.DataFrame:
+        """Retorna la trazabilidad como DataFrame de pandas"""
+        return self.step_tracer.to_dataframe()
     
     def get_improvement_report(self):
-        """Genera informe completo de mejora"""
+        """Genera informe completo de rendimiento y mejoras"""
         print("\n" + "="*60)
-        print("📊 INFORME COMPLETO DE OBSERVABILIDAD")
+        print("📊 INFORME COMPLETO DEL AGENTE")
         print("="*60)
         
-        # Métricas
         self.metrics.print_metrics()
         
-        # Trazabilidad
-        self.tracer.print_analysis()
-        
-        # Seguridad
         s = self.security.get_security_stats()
         print("\n" + "="*50)
-        print("ESTADÍSTICAS DE SEGURIDAD")
+        print("🔒 ESTADÍSTICAS DE SEGURIDAD")
         print("="*50)
         print(f"Consultas bloqueadas: {s['consultas_bloqueadas']}")
         print(f"Datos personales detectados: {s['datos_personales_detectados']}")
         print(f"Intentos de inyección: {s['intentos_inyeccion']}")
         print("="*50)
         
-        # Recomendaciones
         self.improvement.print_recommendations()
+        
+        # Mostrar tabla de trazabilidad
+        print("\n" + "="*60)
+        print("🔍 TRAZABILIDAD DE EJECUCIONES")
+        print("="*60)
+        self.step_tracer.print_execution()
         
         return "Informe completado."
 
 
 # PRUEBA RÁPIDA
 
-
 if __name__ == "__main__":
-    print("🧪 Prueba del agente")
-    print("="*50)
+    print("🧪 Prueba del agente con trazabilidad paso a paso")
+    print("="*60)
     
-    # Demo de seguridad
-    security = SecurityGuard()
-    print("\nPrueba de seguridad:")
-    print(f"'¿Cómo hackear?' → {security.is_safe('¿Cómo hackear un WiFi?')}")
-    print(f"'Hola' → {security.is_safe('Hola')}")
+    # Demo de trazabilidad
+    tracer = StepTracer()
     
-    # Demo de métricas
-    metrics = MetricsTracker()
-    metrics.register_query("soporte", "Galaxy S23", 200, 0.5)
-    metrics.register_query("configuracion", "Galaxy A54", 150, 0.3)
-    metrics.print_metrics()
+    tracer.start_execution("¿Cómo es la cámara del Galaxy S23?")
+    tracer.add_step(0, "security", "Verificar seguridad", "OK", 0.01, 0, "ok")
+    tracer.add_step(1, "tool", "Detectar modelo", "Galaxy S23", 0.02, 0, "ok")
+    tracer.add_step(2, "classification", "Clasificar intención", "consulta_tecnica", 0.15, 0, "ok")
+    tracer.add_step(3, "retrieval", "Buscar en FAISS", "Recuperados 450 caracteres", 0.05, 0, "ok")
+    tracer.add_step(4, "llm", "Generar respuesta", "El Galaxy S23 tiene cámara de 50MP con OIS...", 0.45, 25, "ok")
+    tracer.end_execution()
     
-    print("\n✅ Módulos listos para integrar con el agente.")
+    tracer.start_execution("¿Cómo hackear un WiFi?")
+    tracer.add_step(0, "security", "Verificar seguridad", "Bloqueada: keyword 'hackear'", 0.01, 0, "error")
+    tracer.end_execution()
+    
+    tracer.print_execution()
+    
+    print("\n✅ Sistema de trazabilidad listo para integrar.")

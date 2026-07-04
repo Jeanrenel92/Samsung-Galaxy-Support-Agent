@@ -22,7 +22,6 @@ SEPARATOR = "=" * 60
 
 # VALIDAR ENTORNO
 
-
 def validate_env() -> None:
     """Lanza SystemExit si faltan variables críticas."""
     required = ["GITHUB_TOKEN", "GITHUB_BASE_URL"]
@@ -33,7 +32,6 @@ def validate_env() -> None:
             "Verifica tu archivo .env antes de continuar."
         )
         raise SystemExit(1)
-
 
 #MAIN
 
@@ -46,8 +44,7 @@ def main() -> None:
     # ── Validar entorno
     validate_env()
 
-    # ── Cargar vectorstore (usa get_vectorstore: carga si
-    #    existe, genera si no, sin duplicar embeddings)
+    # ── Cargar vectorstore (usa get_vectorstore: carga si existe, genera si no, sin duplicar embeddings)
     try:
         vectorstore = get_vectorstore()
     except FileNotFoundError as e:

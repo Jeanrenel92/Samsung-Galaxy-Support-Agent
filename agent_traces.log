@@ -50,3 +50,94 @@
 2026-06-27 10:21:29,466 | INFO | 🔍 Traza: {"trace_id": "815c45458c", "timestamp": "2026-06-27T10:21:29.466558", "query_hash": "b2230725", "query_preview": "ROMPER LA SEGURIDAD", "intent": "fuera_contexto", "model_detected": "GALAXY S25 ULTRA", "response_preview": "Solo ayudo con dispositivos Samsung Galaxy. ¿Tienes un Galaxy?", "response_length": 62, "duration_ms": 1423.68, "errors": []}
 2026-06-27 10:22:29,516 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
 2026-06-27 10:22:29,518 | INFO | 🔍 Traza: {"trace_id": "72551c62fa", "timestamp": "2026-06-27T10:22:29.518282", "query_hash": "61e26c84", "query_preview": "COMO VIOLAR EL PIN DEL SAMSUNG S25 ULTRA Y DESBLOQUEARLO", "intent": "fuera_contexto", "model_detected": "GALAXY S25 ULTRA", "response_preview": "Solo ayudo con dispositivos Samsung Galaxy. ¿Tienes un Galaxy?", "response_length": 62, "duration_ms": 1506.64, "errors": []}
+2026-06-27 18:16:55,876 | INFO | Cargando vectorstore existente desde disco...
+2026-06-27 18:16:55,881 | INFO | Loading faiss with AVX2 support.
+2026-06-27 18:16:56,094 | INFO | Successfully loaded faiss with AVX2 support.
+2026-06-27 18:16:56,654 | INFO | 🤖 Agente inicializado
+2026-06-27 18:29:23,888 | INFO | Cargando vectorstore existente desde disco...
+2026-06-27 18:29:23,891 | INFO | Loading faiss with AVX2 support.
+2026-06-27 18:29:23,918 | INFO | Successfully loaded faiss with AVX2 support.
+2026-06-27 18:29:24,434 | INFO | 🤖 Agente inicializado
+2026-06-27 18:29:48,749 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-27 18:29:48,978 | INFO | 🔍 Traza: {"trace_id": "09963879ae", "timestamp": "2026-06-27T18:29:48.978657", "query_hash": "cdcf8d01", "query_preview": "como estas", "intent": "general", "model_detected": "Ninguno", "response_preview": "¡Estoy aquí para ayudarte! ¿En qué puedo asistirte con tu dispositivo Samsung Ga...", "response_length": 87, "duration_ms": 1825.04, "errors": []}
+2026-06-27 18:30:18,348 | INFO | 🔍 Traza: {"trace_id": "678fcd34e5", "timestamp": "2026-06-27T18:30:18.347664", "query_hash": "bbe5feea", "query_preview": "samsung s25 ultra", "intent": "solo_modelo", "model_detected": "GALAXY S25 ULTRA", "response_preview": "¡El GALAXY S25 ULTRA es un gran equipo! ¿En qué necesitas ayuda?", "response_length": 64, "duration_ms": 11.74, "errors": []}
+2026-06-27 18:30:30,242 | INFO | 🔍 Traza: {"trace_id": "1a8f76f7fc", "timestamp": "2026-06-27T18:30:30.242545", "query_hash": "eab32696", "query_preview": "caracteristicas", "intent": "solo_modelo", "model_detected": "GALAXY S25 ULTRA", "response_preview": "¡El GALAXY S25 ULTRA es un gran equipo! ¿En qué necesitas ayuda?", "response_length": 64, "duration_ms": 1.0, "errors": []}
+2026-06-27 18:30:48,099 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-27 18:30:49,015 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-06-27 18:30:49,980 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-27 18:30:50,505 | INFO | 🔍 Traza: {"trace_id": "cfb9d67bb4", "timestamp": "2026-06-27T18:30:50.505547", "query_hash": "0f19904b", "query_preview": "problema con la camara", "intent": "soporte", "model_detected": "GALAXY S25 ULTRA", "response_preview": "1. Limpia el lente de la cámara con un paño de microfibra.  \n2. Verifica si hay ...", "response_length": 338, "duration_ms": 3897.53, "errors": []}
+2026-06-27 18:34:12,443 | INFO | Cargando vectorstore existente desde disco...
+2026-06-27 18:34:12,446 | INFO | Loading faiss with AVX2 support.
+2026-06-27 18:34:12,473 | INFO | Successfully loaded faiss with AVX2 support.
+2026-06-27 18:34:12,987 | INFO | 🤖 Agente inicializado con trazabilidad paso a paso
+2026-06-27 18:35:32,362 | INFO | Cargando vectorstore existente desde disco...
+2026-06-27 18:35:32,365 | INFO | Loading faiss with AVX2 support.
+2026-06-27 18:35:32,391 | INFO | Successfully loaded faiss with AVX2 support.
+2026-06-27 18:35:32,909 | INFO | 🤖 Agente inicializado con trazabilidad paso a paso
+2026-07-03 17:51:24,556 | INFO | Cargando vectorstore existente desde disco...
+2026-07-03 17:51:24,570 | INFO | Loading faiss with AVX2 support.
+2026-07-03 17:51:24,821 | INFO | Successfully loaded faiss with AVX2 support.
+2026-07-03 17:51:25,451 | INFO | 🤖 Agente inicializado con trazabilidad paso a paso
+2026-07-03 17:58:26,367 | INFO | Cargando vectorstore existente desde disco...
+2026-07-03 17:58:26,370 | INFO | Loading faiss with AVX2 support.
+2026-07-03 17:58:26,397 | INFO | Successfully loaded faiss with AVX2 support.
+2026-07-03 17:58:26,956 | INFO | 🤖 Agente inicializado con trazabilidad paso a paso
+2026-07-03 17:58:45,366 | INFO | Cargando vectorstore existente desde disco...
+2026-07-03 17:58:45,369 | INFO | Loading faiss with AVX2 support.
+2026-07-03 17:58:45,395 | INFO | Successfully loaded faiss with AVX2 support.
+2026-07-03 17:58:45,958 | INFO | 🤖 Agente inicializado con trazabilidad paso a paso
+2026-07-03 17:58:58,928 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:59:01,773 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:59:02,726 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-07-03 17:59:03,227 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-07-03 17:59:04,003 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:59:05,845 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:59:06,098 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-07-03 17:59:06,419 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-07-03 17:59:07,194 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:59:08,405 | WARNING | ⚠️ Consulta bloqueada por keyword: 'hackear'
+2026-07-03 17:59:09,599 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:59:09,829 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-07-03 17:59:10,110 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-07-03 17:59:10,851 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:59:12,603 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:59:13,019 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-07-03 17:59:13,406 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-07-03 17:59:14,138 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:59:16,183 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:59:16,425 | INFO | 🔒 Datos personales detectados y sanitizados
+2026-07-03 17:59:16,909 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-03 17:59:16,911 | INFO | Retrying request to /chat/completions in 41.000000 seconds
+2026-07-03 18:00:05,232 | INFO | Cargando vectorstore existente desde disco...
+2026-07-03 18:00:05,236 | INFO | Loading faiss with AVX2 support.
+2026-07-03 18:00:05,265 | INFO | Successfully loaded faiss with AVX2 support.
+2026-07-03 18:00:05,793 | INFO | 🤖 Agente inicializado con trazabilidad paso a paso
+2026-07-03 18:02:16,170 | INFO | Cargando vectorstore existente desde disco...
+2026-07-03 18:02:16,173 | INFO | Loading faiss with AVX2 support.
+2026-07-03 18:02:16,205 | INFO | Successfully loaded faiss with AVX2 support.
+2026-07-03 18:02:16,770 | INFO | 🤖 Agente inicializado con trazabilidad paso a paso
+2026-07-03 18:02:34,112 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 18:02:35,539 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 18:02:36,284 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-07-03 18:02:36,957 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-07-03 18:02:37,887 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 18:02:39,687 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 18:02:40,094 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-07-03 18:02:40,341 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-07-03 18:02:41,092 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 18:02:42,198 | WARNING | ⚠️ Consulta bloqueada por keyword: 'hackear'
+2026-07-03 18:02:43,449 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 18:02:43,768 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-07-03 18:02:43,980 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-07-03 18:02:44,732 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 18:02:46,568 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 18:02:46,886 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-07-03 18:02:47,242 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/embeddings "HTTP/1.1 200 OK"
+2026-07-03 18:02:47,983 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 18:02:50,184 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 18:02:50,405 | INFO | 🔒 Datos personales detectados y sanitizados
+2026-07-03 18:02:50,882 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-03 18:02:50,882 | INFO | Retrying request to /chat/completions in 42.000000 seconds
+2026-07-03 18:03:33,365 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-03 18:03:33,365 | INFO | Retrying request to /chat/completions in 0.915903 seconds
+2026-07-03 18:03:35,277 | INFO | HTTP Request: POST https://models.inference.ai.azure.com/chat/completions "HTTP/1.1 200 OK"
