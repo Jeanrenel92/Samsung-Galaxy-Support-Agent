@@ -67,9 +67,9 @@ def main() -> None:
         print(f"\n[ERROR] No se pudo inicializar el agente:\n{e}\n")
         raise SystemExit(1)
 
-    print("\nAgente inicializado correctamente.")
-    print("Hola! Soy tu asistente virtual. ¿En qué puedo ayudarte hoy?")
-    print(f"(Escribe '{'/'.join(EXIT_COMMANDS)}' para terminar)\n")
+    print("\n[Agente inicializado correctamente.]")
+    print("Hola! Soy tu asistente virtual de Samsung.\n ¿Cómo puedo ayudarte con tu dispositivo?")
+    #print(f"(Escribe '{'/'.join(EXIT_COMMANDS)}' para terminar)\n")
 
     #Chat loop
     while True:
