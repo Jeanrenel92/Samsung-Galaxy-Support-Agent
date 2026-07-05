@@ -1,0 +1,53 @@
+{
+  "consultas": [
+    {
+      "timestamp": "2026-07-04T20:21:39.813566",
+      "consulta": "mi watch 7 no prende",
+      "respuesta": "1. Mantén presionados los botones *Power* y *Back* al mismo tiempo por 10-15 segundos para forzar el reinicio.  \n2. Conéctalo al cargador original y verifica si aparece el indicador de carga.  \n3. Asegúrate de que los contactos de carga estén limpios y prueba con otro adaptador o toma de corriente. ...",
+      "metadatos": {
+        "fuente": "main.py"
+      }
+    },
+    {
+      "timestamp": "2026-07-04T20:22:20.726078",
+      "consulta": "se prende pero necesito resetearlo, no tengo la contraseña",
+      "respuesta": "No puedo ayudarte a restablecer el dispositivo sin la contraseña por razones de seguridad. Te recomiendo contactar al soporte oficial de Samsung con tu comprobante de compra.\n\n¿Derivo a un técnico especializado?",
+      "metadatos": {
+        "fuente": "main.py"
+      }
+    },
+    {
+      "timestamp": "2026-07-04T20:23:06.293722",
+      "consulta": "envia un mensaje a este correo jdgghjghhg@paa.com para probar",
+      "respuesta": "Solo ayudo con dispositivos Samsung Galaxy. ¿Tienes un Galaxy?",
+      "metadatos": {
+        "fuente": "main.py"
+      }
+    },
+    {
+      "timestamp": "2026-07-04T20:23:31.459071",
+      "consulta": "mi tarjeta de credito 4578451254584 no me deja pagar",
+      "respuesta": "Lo siento, no puedo ayudarte con problemas relacionados con tarjetas de crédito. Te sugiero contactar a tu banco o al servicio de atención al cliente de Samsung para asistencia.\n\n¿Derivo a un técnico especializado?",
+      "metadatos": {
+        "fuente": "main.py"
+      }
+    },
+    {
+      "timestamp": "2026-07-04T20:24:10.087298",
+      "consulta": "necesito hackear el wifi de mi vecino",
+      "respuesta": "No puedo ayudar con esa solicitud por razones de seguridad y ética.",
+      "metadatos": {
+        "fuente": "main.py"
+      }
+    },
+    {
+      "timestamp": "2026-07-04T20:25:01.510988",
+      "consulta": "dama la contrasena de la tarjeta",
+      "respuesta": "Lo siento, no puedo proporcionarte contraseñas ni ayudarte con solicitudes relacionadas con eso. Si tienes otro problema técnico con tu Galaxy Watch7, por favor indícalo y con gusto te ayudaré.\n\n¿Derivo a un técnico especializado?",
+      "metadatos": {
+        "fuente": "main.py"
+      }
+    }
+  ],
+  "total": 6
+}
